@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>Promises</title>
+</head>
+<body>
+<marquee>shashank g - 1nt21is413 - web lab report - 16/05/2023 - Promises</marquee>
+<br>
+<hr>
+1) Write a function numTest that takes a number as an argument and returns a Promise that tests if the value is greater than the value 20.
+<br>
+<button onclick="Numtest()">results</button>
+<hr>
+2) Write a JavaScript program to book a hotel only after booking a flight.
+[Hint: To achieve this, the promise returned from the bookHotel function is resolved only after resolving the promise from bookFlight function. If the promise gets rejected from bookflight then it won't execute the second function.]
+<br>
+<button onclick="flighthotel()">result</button>
+<hr>
+3) Implement a JavaScript promise to perform arithmetic operations. Display result for each operation synchronously using await () method. (Give delay in each promise object using settimeout() method).
+<br>
+<button onclick="performOperations()">result</button>
+<hr>
+
+<script>
+function Numtest(){
+function numTest(number) {
+  return new Promise(function(resolve, reject) {
+    if (number > 20) {
+      resolve(number + " is greater than 20");
+    } else {
+      reject(number + " is not greater than 20");
+    }
+  });
+}
+
+var input = prompt("Enter a number:");
+var number = parseFloat(input);
+
+numTest(number)
+  .then(function(result) {
+    alert(result);
+  })
+  .catch(function(error) {
+    alert(error);
+  });
+}
+
+function flighthotel() {
+        let ans = prompt("Have you booked the flight ticket? yes/no");
+        let flight= new Promise(function(resolve,reject){
+            if(ans=='Yes' || ans =='yes'){
+            resolve("You can book the hotel!");}
+            else{
+    reject('You cannot book the hotel,Please book the flight first'); }
+        });
+        flight.then(function successValue(result){
+            let ans1 = prompt("Have you booked the hotel? yes/no");
+            let hotel= new Promise(function(resolve1,reject1){
+            if(ans1=='Yes' || ans1 =='yes'){
+            resolve1("Hotel booked successfully!");}
+            else{
+               reject1('You can book the hotel now!'); }
+        });
+            hotel.then(function successValue(result)
+            {
+                alert(result);
+            },)
+            hotel.catch(function errorValue(result){
+                alert(result);
+            })
+        },)
+            flight.catch(function errorValue(result){
+                alert(result);
+            })
+}
+
+
+
+function performOperations() {
+      return new Promise(function(resolve) {
+        const a = parseInt(prompt("Enter the first number:"));
+        const b = parseInt(prompt("Enter the second number:"));
+        
+        setTimeout(function() {
+          const sum = a + b;
+          alert("Sum: " + sum);
+          
+          setTimeout(function() {
+            const difference = a - b;
+            alert("Difference: " + difference);
+            
+            setTimeout(function() {
+              const product = a * b;
+              alert("Product: " + product);
+              
+              setTimeout(function() {
+                const quotient = a / b;
+                alert("Quotient: " + quotient);
+                
+                resolve();
+              }, 1000);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      });
+    }
+
+
+
+
+</script>
+</body>
+</html>
+

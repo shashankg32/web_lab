@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>function</title>
+
+<script>
+
+//reverse number
+const reverseNumber = () => {
+const num = prompt("Enter a number:");
+const reversedNum = parseInt(num.toString().split('').reverse().join(''));
+alert("Reversed Number: " + reversedNum);
+}
+
+//factorial
+const factorial = () => {
+const num = parseInt(prompt("Enter a number:"));
+let result = 1;
+for (let i = 2; i <= num; i++) 
+{result *= i;}
+alert("Factorial of " + num + " is " + result);
+}
+
+//longest string
+const findLongestWord = () => {
+const str = prompt("Enter a string:");
+const words = str.split(" ");
+let longestWord = "";
+for (let i = 0; i < words.length; i++) 
+{
+if (words[i].length > longestWord.length) 
+{longestWord = words[i];}
+}
+alert("Longest word in the string is: " + longestWord);
+}
+
+//events
+function handleEvent(eventType) {
+  switch (eventType) {
+    case 'click':
+      alert('Clicked!');
+      break;
+    case 'mouseover':
+      alert('Mouse over!');
+      break;
+    case 'mouseout':
+      alert('Mouse out!');
+      break;
+    case 'change':
+      const inputVal = document.getElementById('input').value;
+      alert(`Input value changed to: ${inputVal}`);
+      break;
+    case 'keydown':
+      alert('Key down!');
+      break;
+    default:
+      break;
+  }
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div>
+<marquee direction="left">shashank g - 1nt21is413 - 6th sem C sec - 18 April 2023 - web lab task</marquee>
+</div>
+<hr />
+
+<div>
+<p>
+<div>
+1) Apply JavaScript Arrow function to reverse a given Number. Given Number = 12243; Expected Output: 34221.
+<div>results : <button onclick="reverseNumber()">Reverse Number</button></div>
+</div>
+<hr />
+
+<div>
+2) Write Javascript arrow function to find factorial of a number.
+<div>results : <button onclick="factorial()">Factorial of a Number</button></div>
+</div>
+<hr />
+
+<div>
+3) Write a JavaScript function that accepts a string as a parameter and find the longest word within the string.
+<div>results : <button onclick="findLongestWord()">Longest word in a String.</button></div>
+</div>
+<hr />
+
+<div>
+4) Write an arrow function that accepts an array of strings as input and prompt the message which shows “Enter the Length of the String:” Output: Function should return the entered length strings.
+<div>results : <button onclick="email()">String Length</button></div>
+</div>
+<hr />
+
+<div>
+5) Write a Javascript program to demonstrate the following events :  a) onClick  b) onMouseOver  c) onMouseOut   d) onChange   e) onKeyDown.
+<div>results : hover cursor on click me! bottom and put input text to see the results</div>
+<br>
+<div>
+<input placeholder="type input"type="text" id="input" onChange="handleEvent('change')" onKeyDown="handleEvent('keydown')" />
+<button onClick="handleEvent('click')" onMouseOver="handleEvent('mouseover')" onMouseOut="handleEvent('mouseout')">Click/Hover on me to see the results</button>
+</div>
+</div>
+<hr />
+</p>
+</div>
+
+</body>
+
+</html>

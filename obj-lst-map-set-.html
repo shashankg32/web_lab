@@ -1,0 +1,190 @@
+<html>
+<head>
+<title>Indexed and Keyed Collections</title>
+</head>
+<body>
+
+<marquee>shashank g - 1nt21is413 - Indexed and Keyed Collections - task - 09/05/2023</marquee>
+
+<hr>
+
+<div>
+1) Write a JavaScript program to list the properties values of a JavaScript object.
+
+Sample object: 
+
+var student = { 
+
+name : "David Rayy", 
+
+sclass : "VI", 
+
+rollno : 12 };
+
+Sample Output: David Rayy, VI, 12
+<br>
+<button onclick="props()">Click to see results</button>
+</div>
+
+<hr>
+
+<div>
+2.Write a JavaScript function to convert an object into a list of `[key, value]` pairs.
+<br>
+<button onclick="objectToList()">Click to see results</button>
+</div>
+
+<hr>
+
+<div>
+3.Write a program to store values into a set, and to retrieve value from the set, to iterate over the set
+<br>
+<button onclick="setProgram()">Click to see results</button>
+</div>
+
+<hr>
+
+<div>
+4.Write a program to store values into a map, and to retrieve value from the map using key, to iterate over the map.
+<br>
+<button onclick="mapOperations()">Click to see results</button>
+</div>
+
+<hr>
+
+<div>
+5.Show how map is different from object to store key value pairs with coding examples and prove Maps perform better than objects in most of the scenarios involving addition and removal of keys.
+<br>
+<button onclick="mapVsObject()">Click to see results</button>
+</div>
+
+<hr>
+
+<div>
+6.Show how a set is different from an array to store the value with a coding example and prove Sets perform better than Arrays in most of the scenarios involving searching values present in it.
+<br>
+<button onclick="demonstrateSetVsArray()">Click to see results</button>
+</div>
+
+<hr>
+
+<script>
+
+function props() {
+let student = { 
+  name: "David Rayy", 
+  sclass: "VI", 
+  rollno: 12 
+};
+let propertyValues = Object.values(student).join(", ");
+alert(propertyValues);
+}
+
+
+function objectToList() {
+  var obj = prompt("Enter an object in JSON format:{\"key\":\"values\"}");
+  var keysValues = Object.entries(JSON.parse(obj));
+  var result = [];
+  for (var i = 0; i < keysValues.length; i++) {
+    result.push([keysValues[i][0], keysValues[i][1]]);
+  }
+  alert(JSON.stringify(result));
+}
+
+
+
+function setProgram() 
+{
+let mySet = new Set();
+let input = prompt("Enter values separated by commas:");
+let values = input.split(",");
+values.forEach(value => mySet.add(value.trim()));
+let retrieve = prompt("Enter a value to retrieve from the set:");
+let hasValue = mySet.has(retrieve);
+let setValues = "";
+for(let value of mySet) 
+{
+setValues += value + ", ";
+}
+setValues = setValues.slice(0, -2);
+alert(`Set values: ${setValues}\nRetrieved value: ${retrieve} (${hasValue})`);
+}
+
+
+function mapOperations()
+{
+const map = new Map();
+const key1 = prompt("Enter key 1:");
+const val1 = prompt("Enter value 1:");
+map.set(key1, val1);
+const key2 = prompt("Enter key 2:");
+const val2 = prompt("Enter value 2:");
+map.set(key2, val2);
+const key = prompt("Enter key to retrieve value:");
+const value = map.get(key);
+alert(`Value for key ${key} is ${value}`);
+let mapEntries = map.entries();
+let currentEntry = mapEntries.next();
+let output = "";
+while (!currentEntry.done) {
+output += `${currentEntry.value[0]}: ${currentEntry.value[1]}\n`;
+currentEntry = mapEntries.next();
+}
+alert(output);
+}
+
+
+function mapVsObject() {
+  const n = parseInt(prompt("Enter the number of key-value pairs to store:"));
+  const map = new Map();
+  const obj = {};
+  for (let i = 0; i < n; i++) {
+    const key = `key${i}`;
+    const value = `value${i}`;
+    map.set(key, value);
+    obj[key] = value;
+  }
+  const key = prompt("Enter the key to retrieve the value:");
+  const start1 = performance.now();
+  const value1 = map.get(key);
+  const end1 = performance.now();
+  const start2 = performance.now();
+  const value2 = obj[key];
+  const end2 = performance.now();
+  alert(`Value retrieved from the Map: ${value1}\nTime taken: ${end1 - start1} ms`);
+  alert(`Value retrieved from the Object: ${value2}\nTime taken: ${end2 - start2} ms`);
+  const toRemove = parseInt(prompt("Enter the number of keys to remove:"));
+  const keysToRemove = [];
+  for (let i = 0; i < toRemove; i++) {
+    const key = `key${Math.floor(Math.random() * n)}`;
+    keysToRemove.push(key);
+  }
+  const start3 = performance.now();
+  keysToRemove.forEach(key => map.delete(key));
+  const end3 = performance.now();
+  const start4 = performance.now();
+  keysToRemove.forEach(key => delete obj[key]);
+  const end4 = performance.now();
+  alert(`Time taken to remove keys from the Map: ${end3 - start3} ms`);
+  alert(`Time taken to remove keys from the Object: ${end4 - start4} ms`);
+}
+
+
+function demonstrateSetVsArray() {
+  let values = prompt("Enter comma-separated values:");
+  let set = new Set(values.split(","));
+  let array = values.split(",");
+  alert(`Set: ${[...set]}\nArray: ${array}`);
+  let searchValue = prompt("Enter value to search:");
+  let setStart = performance.now();
+  let setHasValue = set.has(searchValue);
+  let setEnd = performance.now();
+  let arrayStart = performance.now();
+  let arrayHasValue = array.includes(searchValue);
+  let arrayEnd = performance.now();
+  alert(`Set has value "${searchValue}": ${setHasValue}. Search time: ${setEnd - setStart}ms.\nArray has value "${searchValue}": ${arrayHasValue}. Search time: ${arrayEnd - arrayStart}ms.`);
+}
+</script>
+
+</body>
+</html>

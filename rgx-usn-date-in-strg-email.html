@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>regex</title>
+
+<script>
+function usn()
+{ 
+const usnn = prompt("Enter VTU USN");
+var test = usnn.search(/^[1-4][a-z A-Z][a-z A-Z][0-9][0-9][A-Z a-z][A-Z a-z][0-9][0-9][0-9]$/);
+var zerotest = usnn.search(/^[1-4][a-z A-Z][a-z A-Z][0-9][0-9][A-Z a-z][A-Z a-z][0][0][0]$/);
+if(zerotest == 0)
+{alert("invalid usn");}
+else if(test == 0){alert("valid usn");}
+else{alert("invalid usn");}
+}
+
+function email()
+{
+var text = prompt("Enter email id");
+var mailformat = text.search(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+if(mailformat == 0 ) 
+{alert("Valid email");}
+else
+{alert("invalid email");}
+}
+
+
+function date()
+{
+const inputSentence = prompt("Enter a sentence with a date:");
+const regex = /(0[1-9]|[1-2][0-9]|3[0-1])[\/\-](0[1-9]|1[0-2])[\/\-]([0-9][0-9][0-9][1-9])$/;
+//const regexx = /(0[1-9]|[1-2][0-9]|3[0-1])[\/\-](0[1-9]|1[0-2])[\/\-]([0-9][0-9][0-9][0-9])$/;
+const match = regex.exec(inputSentence);
+
+if (match) {
+alert(`Date found: ${match[0]}`);
+} else {
+alert("No valid date found in input sentence.");
+}
+}
+
+</script>
+
+</head>
+
+<body>
+<div>
+<marquee direction="left">shashank g - 1nt21is413 - 6th sem C sec - 25 April 2023 - web lab task</marquee>
+</div>
+<hr />
+<p>
+
+<div>
+Regular Expressions
+1) Write a Javascript program to validate the VTU USN entered in the text box and alert as valid or invalid USN.
+result : 
+<div>results :<button onclick="usn()">Validate VTU-USN</button></div>
+</div>
+<hr />
+<div>
+2) Write a JavaScript program to search a date within a string and display(alert) the date.
+
+Sample Input: "Albert Einstein was born in Ulm, on 14/03/1879."
+
+Sample Output:14/03/1879. 
+<div>results :<button onclick="date()">Date search in a string</button></div>
+</div>
+<hr />
+<div>
+3) Write a Javascript code to validate the email id using regular expressions. email is a string consisting of 3 parts: username, @ symbol and domain. The first part of an email address is the username. @ Symbol fits in between the username and the domain of your email address. The domain consists of two parts: the mail server and the top-level domain. The mail server is the server hosting the email account ("Gmail"). The top-level domain is the extension, such as .com, .net or .info. 
+<div>results :<button onclick="email()">Validate E-mail id</button></div>
+</div>
+<hr />
+
+</p>
+</body>
+
+</html>

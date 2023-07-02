@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>JS Array</title>
+</head>
+<body>
+<div>
+<marquee direction="left">shashank g - 1nt21is413 - 6th sem C sec - 11 April 2023 - web lab task</marquee>
+</div>
+<hr />
+<p>
+1)  Write a JavaScript program to find the leap years in a given range of years.
+<div>result : <button onclick="leap_year()">leap year finder</button></div>
+<hr />
+2)  Write a JavaScript Program to add elements and to delete elements to the existing array at specific positions.
+<div>result : <button onclick="add_remove_element()">array operations</button></div>
+<hr />
+3) Write a JavaScript program to add elements to an array using the prompt. Implement Linear search on the array.
+<div>result: <button onclick="ls()">Linear search</button></div>
+</p>
+<script>
+
+function leap_year()
+{
+const startYear = parseInt(prompt("Enter the starting year:")); 
+const endYear = parseInt(prompt("Enter the ending year:")); 
+let leapYears = ""; 
+
+for (let year = startYear; year <= endYear; year++) {
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+   
+    if (leapYears !== "") {
+      leapYears += ", "; 
+    }
+    leapYears += year;
+  }
+}
+
+if (leapYears === "") {
+  alert("No leap years found in the given range!");
+} else {
+  alert(`The leap years in the given range are: ${leapYears}`);
+}
+}
+
+
+function add_remove_element()
+{
+const size = parseInt(prompt("Enter the size of the array:")); 
+const arr = []; 
+let choice = prompt("Enter 'add' or 'delete' to add or delete elements from the array:"); 
+
+for (let i = 0; i < size; i++) {
+  arr.push(prompt(`Enter the element at index ${i}:`));
+}
+
+if (choice === "add") {
+  const index = parseInt(prompt("Enter the index at which to add the element:"));
+  const element = prompt("Enter the element to add:"); 
+  arr.splice(index, 0, element);
+} else if (choice === "delete") {
+  const index = parseInt(prompt("Enter the index of the element to delete:")); 
+  arr.splice(index, 1); 
+} else {
+  alert("Invalid choice!"); 
+}
+
+alert(`The array is: ${arr}`); 
+
+}
+
+
+function ls()
+{
+const arr = []; // initialize an empty array
+
+// function to add an element to the array
+function addElement() {
+  const element = prompt("Enter the element to add:"); // take input from the user for the element to add
+  arr.push(element); // add the element to the array
+}
+
+// function to delete an element from the array
+function deleteElement() {
+  const element = prompt("Enter the element to delete:"); // take input from the user for the element to delete
+  const index = arr.indexOf(element); // find the index of the element in the array
+  if (index > -1) {
+    arr.splice(index, 1); // delete the element from the array
+    alert(`Element '${element}' deleted from the array!`); // display a message in an alert box
+  } else {
+    alert(`Element '${element}' not found in the array!`); // display a message in an alert box
+  }
+}
+
+// function to implement linear search on the array
+function linearSearch() {
+  const element = prompt("Enter the element to search:"); // take input from the user for the element to search
+  const index = arr.indexOf(element); // find the index of the element in the array
+  if (index > -1) {
+    alert(`Element '${element}' found at index ${index} in the array!`); // display a message in an alert box
+  } else {
+    alert(`Element '${element}' not found in the array!`); // display a message in an alert box
+  }
+}
+
+// take input from the user for the size of the array
+const size = parseInt(prompt("Enter the size of the array:"));
+
+// take input from the user for the elements of the array
+for (let i = 0; i < size; i++) {
+  const element = prompt(`Enter the element at index ${i}:`);
+  arr.push(element);
+}
+
+// take input from the user for the choice of operation
+let choice = prompt("Enter 'add', 'delete', or 'search' to add, delete, or search elements in the array:");
+
+// perform the chosen operation
+switch (choice) {
+  case "add":
+    addElement();
+    break;
+  case "delete":
+    deleteElement();
+    break;
+  case "search":
+    linearSearch();
+    break;
+  default:
+    alert("Invalid choice!");
+}
+
+alert(`The array is: ${arr}`); // display the updated array in an alert box
+
+}
+
+
+</script>
+</body>
+</html>
