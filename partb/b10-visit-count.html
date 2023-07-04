@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Visitor Counter</title>
+</head>
+<body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div style="position: sticky;  bottom: 0;">you are visitors number : <span id="visitorCount">0</span></div>
+<script>
+let visitorCount = localStorage.getItem('visitorCount') || 0;
+visitorCount++;
+localStorage.setItem('visitorCount', visitorCount);
+document.getElementById('visitorCount').textContent = visitorCount;
+</script>
+</body>
+</html>
+

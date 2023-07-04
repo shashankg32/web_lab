@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Infection Detection</title>
+</head>
+<body>
+<h1>Infection Detection</h1>
+<label for="virusComposition">Virus Composition:</label>
+<input type="text" id="virusComposition">
+<label for="bloodComposition">Blood Composition:</label>
+<input type="text" id="bloodComposition">
+<button onclick="checkInfection()">Check Infection</button>
+<script>
+function checkInfection() {
+const virusComposition = document.getElementById("virusComposition").value;
+const bloodComposition = document.getElementById("bloodComposition").value;
+let virusIndex = 0;
+let bloodIndex = 0;
+while (virusIndex < virusComposition.length && bloodIndex < bloodComposition.length) {
+if (virusComposition[virusIndex] === bloodComposition[bloodIndex]) {
+bloodIndex++;
+}
+virusIndex++;
+}
+const result = bloodIndex === bloodComposition.length ? "POSITIVE" : "NEGATIVE";
+alert("Result: " + result);
+}
+</script>
+</body>
+</html>
