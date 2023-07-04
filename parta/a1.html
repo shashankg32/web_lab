@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>prog 1</title>
+        <script>
+            function sum()
+            {
+                const firstNumber = parseInt(prompt("Enter the first number:"));
+                const secondNumber = parseInt(prompt("Enter the second number:"));
+                const sum = firstNumber + secondNumber;
+                alert("The sum is: " + sum);
+            }
+            function reverseNumber() {
+  const number = parseInt(prompt("Enter a number:"));
+
+  if (isNaN(number)) {
+    alert("Invalid input. Please enter a valid number.");
+    return;
+  }
+
+  const reversedString = String(number).split('').reverse().join('');
+  const reversedNumber = parseInt(reversedString);
+
+  alert("The reversed number is: " + reversedNumber);
+}
+
+
+        </script>
+    </head>
+    <body>
+        <button onclick="sum()">sum button</button>
+        <button onclick="reverseNumber()">reverse number</button>
+    </body>
+</html>
