@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>event handel</title>
+<script>
+function handleEvent(eventType) {
+  switch (eventType) {
+    case 'click':
+      alert('Clicked!');
+      break;
+    case 'mouseover':
+      alert('Mouse over!');
+      break;
+    case 'mouseout':
+      alert('Mouse out!');
+      break;
+    case 'change':
+      const inputVal = document.getElementById('input').value;
+      alert(`Input value changed to: ${inputVal}`);
+      break;
+    case 'keydown':
+      alert('Key down!');
+      break;
+    default:
+      break;
+  }
+}
+</script>
+
+
+<div>results : hover cursor on click me! bottom and put input text to see the results</div>
+<br>
+<div>
+<input placeholder="type input"type="text" id="input" onChange="handleEvent('change')" onKeyDown="handleEvent('keydown')" />
+<button onClick="handleEvent('click')" onMouseOver="handleEvent('mouseover')" onMouseOut="handleEvent('mouseout')">Click/Hover on me to see the results</button>
+</div>
+</div>
+<hr />
+</p>
+</div>
+
+</body>
+
+</html>

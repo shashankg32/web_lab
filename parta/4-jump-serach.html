@@ -1,0 +1,41 @@
+<html><head> <title>Jump Search</title></head>
+<body><h1>Jump Search</h1>
+<button onclick="jumpSearchPrompt()">Search</button>
+<script>
+function jumpSearch(arr, key) {
+var n = arr.length;
+var step = Math.floor(Math.sqrt(n));
+var prev = 0;
+// Find the block where the key may exist
+while (arr[Math.min(step, n) - 1] < key) {
+prev = step;
+step += Math.floor(Math.sqrt(n));
+if (prev >= n) {
+return -1;
+}
+}
+// Linear search within the block
+while (arr[prev] < key) {
+prev++;
+if (prev === Math.min(step, n)) {
+return -1;
+}
+}
+// Check if the key is found
+if (arr[prev] === key) {
+return prev;
+}
+return -1;
+}
+function jumpSearchPrompt() {
+var key = parseInt(prompt("Enter the key: "));
+var numbers = prompt("Enter a list of numbers (space-separated): ").split("
+").map(Number);
+var index = jumpSearch(numbers, key);
+if (index !== -1) {
+alert("Key found at index " + index);
+} else {
+alert("Key not found");
+}
+}
+</script></body></html>
